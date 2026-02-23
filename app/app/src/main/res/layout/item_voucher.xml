@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="@color/white"
+    android:layout_marginBottom="8dp">
+
+    <TextView
+        android:id="@+id/tv_voucher_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SALE50"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_voucher_discount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Giảm 50%"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp" />
+
+    <TextView
+        android:id="@+id/tv_voucher_expiry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hạn: 30/12/2026"
+        android:textSize="12sp"
+        android:textColor="@color/gray_dark"
+        android:layout_marginTop="2dp" />
+
+    <TextView
+        android:id="@+id/tv_voucher_usage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Đã dùng 10/100"
+        android:textSize="12sp"
+        android:textColor="@color/gray_dark"
+        android:layout_marginTop="2dp" />
+
+</LinearLayout>
+
