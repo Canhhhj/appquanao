@@ -13,9 +13,9 @@
         android:icon="@android:drawable/ic_menu_camera"
         android:title="Live" />
     <item
-        android:id="@+id/nav_notif"
-        android:icon="@android:drawable/ic_popup_reminder"
-        android:title="Thông báo" />
+        android:id="@+id/nav_cart"
+        android:icon="@android:drawable/ic_menu_add"
+        android:title="Giỏ Hàng" />
     <item
         android:id="@+id/nav_profile"
         android:icon="@android:drawable/ic_menu_my_calendar"

@@ -16,15 +16,15 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = null;
             int id = item.getItemId();
-            
+
             if (id == R.id.nav_home) {
                 selectedFragment = new HomeFragment();
             } else if (id == R.id.nav_mall) {
-                selectedFragment = new HomeFragment(); // Reuse home for now
+                selectedFragment = new HomeFragment();
             } else if (id == R.id.nav_live) {
-                selectedFragment = new HomeFragment(); // Reuse home for now
-            } else if (id == R.id.nav_notif) {
-                selectedFragment = new CartFragment(); // Use Cart as placeholder
+                selectedFragment = new HomeFragment();
+            } else if (id == R.id.nav_cart) {
+                selectedFragment = new CartFragment();
             } else if (id == R.id.nav_profile) {
                 selectedFragment = new ProfileFragment();
             }
