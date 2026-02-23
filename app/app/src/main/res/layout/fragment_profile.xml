@@ -8,53 +8,85 @@
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="160dp"
         android:background="@color/shopee_orange"
         android:orientation="vertical"
         android:gravity="center">
-        
+
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
             android:src="@android:drawable/sym_def_app_icon"
             android:background="@drawable/bg_search"/>
-            
+
         <TextView
+            android:id="@+id/tv_profile_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nguyen Van A"
+            android:text="Tên người dùng"
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="18sp"
             android:layout_marginTop="10dp"/>
-            
+
+        <TextView
+            android:id="@+id/tv_profile_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="email@example.com"
+            android:textColor="#FFEEEE"
+            android:textSize="13sp"
+            android:layout_marginTop="4dp"/>
     </LinearLayout>
+
+    <!-- Menu items -->
+    <TextView
+        android:id="@+id/tv_my_orders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🧾  Đơn mua của tôi"
+        android:background="@color/white"
+        android:padding="16dp"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:drawableEnd="@android:drawable/ic_menu_more"/>
+
+    <TextView
+        android:id="@+id/tv_my_vouchers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🎟️  Kho voucher"
+        android:background="@color/white"
+        android:padding="16dp"
+        android:textSize="15sp"
+        android:layout_marginTop="2dp"
+        android:drawableEnd="@android:drawable/ic_menu_more"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đơn mua"
+        android:text="⚙️  Thiết lập tài khoản"
         android:background="@color/white"
-        android:padding="15dp"
+        android:padding="16dp"
+        android:textSize="15sp"
         android:layout_marginTop="10dp"
-        android:drawableEnd="@android:drawable/ic_menu_more" />
-        
-    <TextView
+        android:drawableEnd="@android:drawable/ic_menu_preferences"/>
+
+    <!-- Spacer -->
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Kho voucher"
-        android:background="@color/white"
-        android:padding="15dp"
-        android:layout_marginTop="2dp"
-        android:drawableEnd="@android:drawable/ic_menu_more" />
-        
-    <TextView
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <!-- Logout Button -->
+    <Button
+        android:id="@+id/btn_logout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Thiết lập tài khoản"
-        android:background="@color/white"
-        android:padding="15dp"
-        android:layout_marginTop="10dp"
-        android:drawableEnd="@android:drawable/ic_menu_preferences" />
-        
+        android:layout_height="50dp"
+        android:text="ĐĂNG XUẤT"
+        android:backgroundTint="#E53935"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_margin="16dp"/>
+
 </LinearLayout>
