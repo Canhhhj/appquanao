@@ -64,26 +64,30 @@ public class LoginActivity extends AppCompatActivity {
                 btnLogin.setText("ĐĂNG NHẬP");
 
                 if (response.isSuccessful() && response.body() != null) {
-                    User found = null;
+                    User foundByCredentials = null;
                     for (User u : response.body()) {
                         if (u.getEmail() != null && u.getEmail().equalsIgnoreCase(email)
                                 && u.getPassword() != null && u.getPassword().equals(password)) {
-                            found = u;
+                            foundByCredentials = u;
                             break;
                         }
                     }
-                    if (found != null) {
+                    if (foundByCredentials != null && "Hoạt động".equals(foundByCredentials.getStatus())) {
                         UserSession.getInstance(LoginActivity.this)
-                                .saveLogin(found.getId(), found.getName(), found.getEmail());
+                                .saveLogin(foundByCredentials.getId(), foundByCredentials.getName(), foundByCredentials.getEmail());
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         finish();
                         Toast.makeText(LoginActivity.this,
-                            "Chào mừng " + found.getName() + "! 👋", Toast.LENGTH_SHORT).show();
+                            "Chào mừng " + foundByCredentials.getName() + "! 👋", Toast.LENGTH_SHORT).show();
+                    } else if (foundByCredentials != null) {
+                        // Đúng email + mật khẩu nhưng tài khoản bị khóa
+                        Toast.makeText(LoginActivity.this,
+                            "Tài khoản đã bị khóa. Vui lòng liên hệ nhân viên để biết chi tiết.", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(LoginActivity.this,
-                            "Email hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+                            "Email hoặc mật khẩu không đúng.", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(LoginActivity.this,

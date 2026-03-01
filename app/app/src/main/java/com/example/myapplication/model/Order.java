@@ -5,11 +5,14 @@ import java.util.List;
 
 public class Order implements Serializable {
     private String id;
+    private String userId;
     private String customer;
     private String date;
     private double total;
     private String status;
     private String payment;
+    private String address;
+    private String phone;
     private List<OrderItem> items;
 
     public Order() {}
@@ -36,6 +39,9 @@ public class Order implements Serializable {
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 
+    public String getUserId() { return userId; }
+    public void setUserId(String userId) { this.userId = userId; }
+
     public String getCustomer() { return customer; }
     public void setCustomer(String customer) { this.customer = customer; }
 
@@ -50,6 +56,12 @@ public class Order implements Serializable {
 
     public String getPayment() { return payment; }
     public void setPayment(String payment) { this.payment = payment; }
+
+    public String getAddress() { return address; }
+    public void setAddress(String address) { this.address = address; }
+
+    public String getPhone() { return phone; }
+    public void setPhone(String phone) { this.phone = phone; }
 
     public List<OrderItem> getItems() { return items; }
     public void setItems(List<OrderItem> items) { this.items = items; }
