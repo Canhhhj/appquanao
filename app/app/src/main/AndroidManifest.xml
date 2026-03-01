@@ -37,27 +37,57 @@
 
         <activity
             android:name=".MainActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
 
         <activity
             android:name=".ProductDetailActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
 
         <activity
             android:name=".CheckoutActivity"
-            android:exported="false"/>
-
-        <activity
-            android:name=".MyOrdersActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
 
         <activity
             android:name=".VouchersActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity
+            android:name=".ProductListActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
 
         <activity
             android:name=".MyOrdersActivity"
-            android:exported="false"/>
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+
+        <activity
+            android:name=".OrderDetailActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+
+        <activity
+            android:name=".AddressActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+
+        <activity
+            android:name=".NotificationsActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+
+        <activity
+            android:name=".ContactActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+
+        <activity
+            android:name=".FavoritesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
     </application>
 
 </manifest>
