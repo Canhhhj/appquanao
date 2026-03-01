@@ -28,11 +28,11 @@ public class ProfileFragment extends Fragment {
         View tvVouchers = view.findViewById(R.id.tv_my_vouchers);
 
         if (session.isLoggedIn()) {
-            // Hiển thị thông tin user đã đăng nhập
             if (tvName != null) tvName.setText(session.getUserName());
             if (tvEmail != null) tvEmail.setText(session.getUserEmail());
             if (btnLogout != null) {
                 btnLogout.setText("ĐĂNG XUẤT");
+                btnLogout.setBackgroundResource(R.drawable.bg_btn_logout);
                 btnLogout.setOnClickListener(v -> {
                     session.logout();
                     Intent intent = new Intent(requireContext(), LoginActivity.class);
@@ -41,13 +41,11 @@ public class ProfileFragment extends Fragment {
                 });
             }
         } else {
-            // Chưa đăng nhập
             if (tvName != null) tvName.setText("Khách");
             if (tvEmail != null) tvEmail.setText("Chưa đăng nhập");
             if (btnLogout != null) {
                 btnLogout.setText("ĐĂNG NHẬP");
-                btnLogout.setBackgroundTintList(
-                    requireContext().getColorStateList(android.R.color.holo_orange_dark));
+                btnLogout.setBackgroundResource(R.drawable.bg_btn_login_profile);
                 btnLogout.setOnClickListener(v -> {
                     startActivity(new Intent(requireContext(), LoginActivity.class));
                 });
@@ -67,7 +65,7 @@ public class ProfileFragment extends Fragment {
             });
         }
 
-        // Kho voucher - hiển thị danh sách voucher
+        // Kho voucher
         if (tvVouchers != null) {
             tvVouchers.setOnClickListener(v -> {
                 if (!session.isLoggedIn()) {
@@ -78,6 +76,28 @@ public class ProfileFragment extends Fragment {
                     startActivity(new Intent(requireContext(), VouchersActivity.class));
                 }
             });
+        }
+
+        View tvNotifications = view.findViewById(R.id.tv_notifications);
+        if (tvNotifications != null) {
+            tvNotifications.setOnClickListener(v -> {
+                if (!session.isLoggedIn()) {
+                    android.widget.Toast.makeText(requireContext(), "Vui lòng đăng nhập để xem thông báo", android.widget.Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(requireContext(), LoginActivity.class));
+                } else {
+                    startActivity(new Intent(requireContext(), NotificationsActivity.class));
+                }
+            });
+        }
+
+        View tvContact = view.findViewById(R.id.tv_contact);
+        if (tvContact != null) {
+            tvContact.setOnClickListener(v -> startActivity(new Intent(requireContext(), ContactActivity.class)));
+        }
+
+        View tvFavorites = view.findViewById(R.id.tv_favorites);
+        if (tvFavorites != null) {
+            tvFavorites.setOnClickListener(v -> startActivity(new Intent(requireContext(), FavoritesActivity.class)));
         }
 
         return view;
