@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_light"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="24dp">
+
+        <!-- Header Khám phá với gradient -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_header_gradient"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="20dp"
+            android:elevation="6dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Khám phá"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Khuyến mãi, mã giảm giá và ưu đãi hấp dẫn"
+                android:textColor="@color/white"
+                android:alpha="0.92"
+                android:textSize="14sp"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- Section: Khuyến mãi nổi bật -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Khuyến mãi nổi bật"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/gray_dark"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            app:cardCornerRadius="14dp"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="6dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/img_highlight"
+                    android:layout_width="match_parent"
+                    android:layout_height="172dp"
+                    android:scaleType="centerCrop"
+                    android:background="@color/gray_light"
+                    android:src="@android:drawable/ic_menu_gallery" />
+
+                <TextView
+                    android:id="@+id/tv_highlight_title"
+                    android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                    android:text="Khuyến mãi nổi bật"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:padding="14dp"
+                    android:textColor="@color/gray_dark" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Section: Mã giảm giá đang hot -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mã giảm giá đang hot"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="8dp"
+            android:textColor="@color/shopee_orange" />
+
+        <!-- Thông báo trống -->
+        <TextView
+            android:id="@+id/tv_empty_live"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hiện chưa có mã giảm giá nào. Sắp ra mắt!"
+            android:textSize="14sp"
+            android:textColor="@color/gray_text"
+            android:gravity="center"
+            android:padding="28dp"
+            android:background="@color/white"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="4dp"
+            android:visibility="gone" />
+
+        <!-- Danh sách voucher -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_promotions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp"
+            android:clipToPadding="false" />
+
+        <!-- Gợi ý sử dụng mã -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            app:cardCornerRadius="12dp"
+            app:cardUseCompatPadding="true"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@color/white">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="💡 Hướng dẫn"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/gray_dark" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nhấn vào mã giảm giá để áp dụng. Vào giỏ hàng hoặc thanh toán để xem giảm giá."
+                    android:textSize="13sp"
+                    android:textColor="@color/gray_text"
+                    android:layout_marginTop="6dp"
+                    android:lineSpacingExtra="2dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+

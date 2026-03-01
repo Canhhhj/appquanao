@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_light">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_addresses"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@android:drawable/ic_menu_revert" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chọn địa chỉ giao hàng"
+        android:padding="16dp"
+        android:textSize="14sp"
+        android:textColor="@color/text_secondary" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_addresses"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp" />
+
+    <TextView
+        android:id="@+id/tv_empty_addresses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="24dp"
+        android:text="Chưa có địa chỉ."
+        android:textColor="@color/text_secondary"
+        android:visibility="gone" />
+</LinearLayout>
