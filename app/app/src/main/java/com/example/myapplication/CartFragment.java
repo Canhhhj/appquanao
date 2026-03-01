@@ -22,7 +22,7 @@ import java.util.Locale;
 public class CartFragment extends Fragment {
 
     private RecyclerView recyclerView;
-    private TextView tvTotal, tvEmpty;
+    private TextView tvTotal, tvEmpty, tvVoucherInfo;
     private Button btnCheckout;
     private CartAdapter cartAdapter;
 
@@ -34,6 +34,7 @@ public class CartFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recycler_cart);
         tvTotal = view.findViewById(R.id.tv_total);
         tvEmpty = view.findViewById(R.id.tv_empty_cart);
+        tvVoucherInfo = view.findViewById(R.id.tv_voucher_info);
         btnCheckout = view.findViewById(R.id.btn_checkout);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -74,19 +75,35 @@ public class CartFragment extends Fragment {
     }
 
     private void updateTotal() {
+        CartManager cm = CartManager.getInstance();
+        if (tvVoucherInfo != null) {
+            if (cm.getAppliedVoucher() != null) {
+                tvVoucherInfo.setVisibility(View.VISIBLE);
+                tvVoucherInfo.setText("Đang dùng voucher: " + cm.getAppliedVoucher().getCode() + " (" + cm.getAppliedVoucher().getDiscount() + ")");
+            } else {
+                tvVoucherInfo.setVisibility(View.GONE);
+            }
+        }
         if (tvTotal == null) return;
-        double totalPrice = CartManager.getInstance().getTotalPrice();
+        double totalPrice = cm.getTotalPrice();
+        double discount = cm.getDiscountAmount();
+        double finalTotal = cm.getFinalTotal();
         NumberFormat format = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
-        tvTotal.setText("Tổng: " + format.format(totalPrice));
+        if (discount > 0) {
+            tvTotal.setText("Tổng sau giảm: " + format.format(finalTotal) + " (đã giảm " + format.format(discount) + ")");
+        } else {
+            tvTotal.setText("Tổng: " + format.format(totalPrice));
+        }
     }
 
     private void updateEmptyState() {
-        if (tvEmpty == null || recyclerView == null) return;
+        View layoutEmpty = getView() != null ? getView().findViewById(R.id.layout_empty_cart) : null;
+        if (layoutEmpty == null || recyclerView == null) return;
         if (CartManager.getInstance().getCartItems().isEmpty()) {
-            tvEmpty.setVisibility(View.VISIBLE);
+            layoutEmpty.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
         } else {
-            tvEmpty.setVisibility(View.GONE);
+            layoutEmpty.setVisibility(View.GONE);
             recyclerView.setVisibility(View.VISIBLE);
         }
     }
