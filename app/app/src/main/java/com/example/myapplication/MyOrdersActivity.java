@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -47,6 +48,13 @@ public class MyOrdersActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new OrderAdapter(myOrders);
+        adapter.setOnOrderClickListener(order -> {
+            if (order != null && order.getId() != null) {
+                Intent i = new Intent(MyOrdersActivity.this, OrderDetailActivity.class);
+                i.putExtra(OrderDetailActivity.EXTRA_ORDER_ID, order.getId());
+                startActivity(i);
+            }
+        });
         recyclerView.setAdapter(adapter);
 
         swipeRefreshLayout.setOnRefreshListener(this::loadOrders);
@@ -56,6 +64,7 @@ public class MyOrdersActivity extends AppCompatActivity {
 
     private void loadOrders() {
         swipeRefreshLayout.setRefreshing(true);
+        String currentUserId = UserSession.getInstance(this).getUserId();
         String currentCustomer = UserSession.getInstance(this).getUserName();
 
         RetrofitClient.getService().getOrders().enqueue(new Callback<List<Order>>() {
@@ -66,9 +75,13 @@ public class MyOrdersActivity extends AppCompatActivity {
 
                 if (response.isSuccessful() && response.body() != null) {
                     for (Order o : response.body()) {
-                        if (o.getCustomer() != null && o.getCustomer().equals(currentCustomer)) {
-                            myOrders.add(o);
+                        boolean mine = false;
+                        if (currentUserId != null && !currentUserId.isEmpty() && o.getUserId() != null && o.getUserId().equals(currentUserId)) {
+                            mine = true;
+                        } else if (o.getCustomer() != null && o.getCustomer().equals(currentCustomer)) {
+                            mine = true;
                         }
+                        if (mine) myOrders.add(o);
                     }
                 } else {
                     Toast.makeText(MyOrdersActivity.this,
