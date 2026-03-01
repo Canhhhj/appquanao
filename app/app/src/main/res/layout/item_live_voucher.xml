@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/bg_voucher_accent"
+        android:paddingStart="16dp"
+        android:paddingEnd="14dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã giảm giá"
+                android:textSize="11sp"
+                android:textColor="@color/gray_text"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_live_voucher_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SALE50 - Giảm 50%"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="@color/shopee_orange"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/tv_live_voucher_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Giới hạn 100 • Đã dùng 45"
+                android:textSize="12sp"
+                android:textColor="@color/gray_text"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nhấn để áp dụng →"
+                android:textSize="12sp"
+                android:textColor="@color/shopee_orange"
+                android:textStyle="bold"
+                android:layout_marginTop="6dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+
