@@ -1,19 +1,23 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme - has ActionBar for MainActivity/ProductDetail/Checkout -->
     <style name="Base.Theme.MyApplication" parent="Theme.Material3.Light">
-        <item name="colorPrimary">#EE4D2D</item>
-        <item name="colorPrimaryVariant">#C62828</item>
-        <item name="colorOnPrimary">#FFFFFF</item>
-        <item name="android:windowBackground">@color/white</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="android:windowBackground">@color/background_light</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
     </style>
 
     <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
 
     <!-- No Action Bar for Login/Register/Splash screens -->
     <style name="Theme.MyApplication.NoActionBar" parent="Theme.Material3.Light.NoActionBar">
-        <item name="colorPrimary">#EE4D2D</item>
-        <item name="colorPrimaryVariant">#C62828</item>
-        <item name="colorOnPrimary">#FFFFFF</item>
-        <item name="android:windowBackground">@color/white</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorOnPrimary">@color/on_primary</item>
+        <item name="android:windowBackground">@color/background_light</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
     </style>
 </resources>

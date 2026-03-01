@@ -11,10 +11,20 @@ import com.example.myapplication.model.Category;
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
-    private List<Category> categoryList;
+    public interface OnCategoryClickListener {
+        void onCategoryClick(Category category);
+    }
 
-    public CategoryAdapter(List<Category> categoryList) {
+    private final List<Category> categoryList;
+    private final OnCategoryClickListener listener;
+    private int selectedPosition = RecyclerView.NO_POSITION;
+
+    public CategoryAdapter(List<Category> categoryList, OnCategoryClickListener listener) {
         this.categoryList = categoryList;
+        this.listener = listener;
+        if (!categoryList.isEmpty()) {
+            this.selectedPosition = 0;
+        }
     }
 
     @NonNull
@@ -28,12 +38,33 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         Category category = categoryList.get(position);
         holder.tvName.setText(category.getName());
-        // Handle image loading if URL provided, for now just text/icon
+
+        // Highlight selected category
+        boolean isSelected = position == selectedPosition;
+        holder.itemView.setBackgroundResource(isSelected ? R.drawable.bg_category_selected : android.R.color.transparent);
+        holder.tvName.setTextColor(androidx.core.content.ContextCompat.getColor(holder.itemView.getContext(),
+                isSelected ? R.color.shopee_orange : R.color.gray_text));
+
+        holder.itemView.setOnClickListener(v -> {
+            int previous = selectedPosition;
+            selectedPosition = position;
+            notifyItemChanged(previous);
+            notifyItemChanged(selectedPosition);
+            if (listener != null) {
+                listener.onCategoryClick(category);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return categoryList.size();
+    }
+
+    public void clearSelection() {
+        int previous = selectedPosition;
+        selectedPosition = RecyclerView.NO_POSITION;
+        notifyItemChanged(previous);
     }
 
     public static class CategoryViewHolder extends RecyclerView.ViewHolder {
